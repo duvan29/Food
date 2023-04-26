@@ -1,12 +1,38 @@
+// Importamos los DataTypes desde Sequelize
 const { DataTypes } = require('sequelize');
-// Exportamos una funcion que define el modelo
-// Luego le injectamos la conexion a sequelize.
+
+// Exportamos una función que define el modelo Recipe
 module.exports = (sequelize) => {
-  // defino el modelo
-  sequelize.define('recipe', {
+  sequelize.define('Recipe', {
+    id: {
+      type: DataTypes.UUID,
+      allowNull: false,
+      primaryKey: true,
+    },
     name: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      unique: true
+    },
+    image: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      vadation: {
+        isUrl:true
+      }
+    },
+    summary: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
+    healthScore: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+    },
+    stepByStep: {
       type: DataTypes.STRING,
       allowNull: false,
     },
   });
 };
+
