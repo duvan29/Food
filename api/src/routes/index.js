@@ -13,6 +13,6 @@ const router = Router();
 router.get('/recipes', getRepiceByName);
 router.get('/recipes/:id', getRecipeById);
 router.get('/diets', getDiets);
-router.post('/recipes', createRecipe)
+router.post('/recipes', createRecipe);
 
 module.exports = router;
