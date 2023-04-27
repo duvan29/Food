@@ -3,6 +3,8 @@ const { Router } = require('express');
 
 const getRecipeById = require('../controllers/getRecipeById');
 const getRepiceByName = require('../controllers/getRepiceByName');
+const getDiets = require('../controllers/getDiets');
+const createRecipe = require('../controllers/postRecipes');
 
 const router = Router();
 
@@ -10,6 +12,7 @@ const router = Router();
 
 router.get('/recipes', getRepiceByName);
 router.get('/recipes/:id', getRecipeById);
-
+router.get('/diets', getDiets);
+router.post('/recipes', createRecipe)
 
 module.exports = router;
