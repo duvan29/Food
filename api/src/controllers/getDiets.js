@@ -9,7 +9,7 @@ const getDiets = async (req, res) => {
         res.status(200).json(allDiets);
         } else {
         // Hacer un llamado a la API de Spoonacular para obtener un array de objetos con las recetas
-        const { data } = await axios.get(`https://api.spoonacular.com/recipes/complexSearch?apiKey=${API_KEY}&addRecipeInformation=true&number=1000`);
+        const { data } = await axios.get(`https://api.spoonacular.com/recipes/complexSearch?apiKey=${API_KEY}&addRecipeInformation=true&number=37`);
 
         // Crear un nuevo array con valores únicos de diets
 
@@ -20,7 +20,6 @@ const getDiets = async (req, res) => {
             recipeDiets.forEach((t) => dietEach.add(t));
         });
 
-        console.log(dietEach);
         // Iterar sobre dietEach y guardar cada dieta en la base de datos, si no existe
         for (let i = 0; i < dietEach.length; i++) {
             await Diet.findOrCreate({
