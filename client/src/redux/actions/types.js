@@ -1,0 +1,11 @@
+export const ALL_RECIPES = "ALL_RECIPES";
+export const SEARCH_RECIPES = "SEARCH_RECIPES";
+export const NEXT_PAGE = "NEXT_PAGE";
+export const PREV_PAGE = "PREV_PAGE";
+export const RESET_NUM_PAGE = "RESET_NUM_PAGE";
+export const RESET_PAGE = "RESET_PAGE";
+export const ALL_DIETS = "ALL_DIETS";
+export const FILTER_DIETS = "FILTER_DIETS";
+export const FILTER_ORIGIN = "FILTER_ORIGIN";
+export const ORDER_DIET = "ORDER_DIET"
+export const ORDER_HEALTHSCORE = "ORDER_HEALTHSCORE"
