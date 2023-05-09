@@ -29,7 +29,7 @@ const { id } = req.params;
         return res.status(200).json(dbRecipesById);
     } else { 
         // Si el id no es válido, obtenemos la información de la receta desde la API de Spoonacular
-        apiRecipesById =  getApiById;
+        let apiRecipesById =  getApiById;
         if (apiRecipesById.data.id) {
             // Si la receta existe en la API, creamos un objeto con la información que necesitamos
             let recipeDetails =  {                    
@@ -51,8 +51,8 @@ const { id } = req.params;
         }
     } 
 } catch (err) {
-    // Si ocurre un error, devolvemos un estado 405 y un mensaje de error
-    return res.status(405).send(err.message);
+    // Si ocurre un error, devolvemos un estado 404 y un mensaje de error
+    return res.status(404).send(err.message);
 }
 }
 

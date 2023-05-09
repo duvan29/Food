@@ -7,7 +7,7 @@ const createRecipe = async (req, res) => {
     const recipeExists = await Recipe.findOne({ where: { name } });
     
     if (recipeExists) {
-      return res.status(409).json({ message: "Recipe already exists" });
+      return res.status(404).json({ message: "Recipe already exists" });
     }
 
     // Create recipe

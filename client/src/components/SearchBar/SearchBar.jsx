@@ -2,6 +2,7 @@ import { searchRecipes } from "../../redux/actions/actions";
 import axios from "axios";
 import { useDispatch } from "react-redux";
 import { resetNumPage } from "../../redux/actions/actions";
+import style from './Search.module.css'
 
 const SearchBar = () => {
   const dispatch = useDispatch();
@@ -21,7 +22,7 @@ const SearchBar = () => {
 
   return (
     <div>
-      <input type="search" onChange={onSearch} />
+      <input className={style.input} type="search" onChange={onSearch} placeholder="Search Recipe..."/>
     </div>
   );
 }; 

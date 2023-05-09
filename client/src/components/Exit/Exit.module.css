@@ -1,0 +1,58 @@
+@import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@1,700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Special+Elite&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@200&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Carlito&display=swap');
+
+.contendor{
+    text-decoration: none;
+    display: flex;
+    justify-content: right;
+    text-align: center;
+    height: 55px;
+}
+
+.link{
+    text-decoration: none;
+}
+
+.rutas{
+    background: #fff; /* color de fondo */
+    color: #A63B32; /* color de fuente */
+    border: 2px solid #A63B32; /* tamaño y color de borde */
+    padding: 10px 18px;
+    border-radius: 2px; /* redondear bordes */
+    position: relative;
+    z-index: 1;
+    overflow: hidden;
+    display: inline-block;
+    font-family: 'Special Elite', cursive;
+    margin-top: 12px;
+    margin-right: 40px;
+} 
+
+
+.rutas:hover{
+    color: #fff;
+}
+
+.rutas::after {
+    content: "";
+    background: #A63B32;
+    color: #fff; /* color de fondo hover */
+    position: absolute;
+    z-index: -1;
+    padding: 16px 20px;
+    display: block;
+    left: -30%;
+    right: -30%;
+    top: 0;
+    bottom: 0;
+    transform: skewX(-45deg) scale(0, 1);
+    transition: all 0.3s ease;
+  }
+
+  .rutas:hover::after {
+    transition: all 0.3s ease-out;
+    transform: skewX(-45deg) scale(1, 1);
+  }

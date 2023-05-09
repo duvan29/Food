@@ -1,7 +1,8 @@
-import { Link } from "react-router-dom";
+
+import style from './Nav.module.css'
 import SearchBar from "../SearchBar/SearchBar";
 import { useDispatch, useSelector } from "react-redux";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import {
   allDiets,
   dietsFilter,
@@ -14,25 +15,40 @@ import axios from "axios";
 
 const Nav = () => {
   const dispatch = useDispatch();
-
+  const [ aux, setAux ] = useState(false);
+  const [ aux2, setAux2 ] = useState(false);
+  const [ aux3, setAux3 ] = useState(false);
+  const [ onOff, setOnOff ] = useState([]);
+  
+  
   const onClick = () => {
+    setOnOff([])
     dispatch(resetPage());
   };
 
-  const handlefilter = (event) => {
-    dispatch(dietsFilter(event.target.value));
+  useEffect(() => {
+    dispatch(dietsFilter(onOff))
+  }, [onOff]);
+
+  const handlefilter = (diets) => {
+    if (onOff.includes(diets)) {
+      let algo = onOff.filter(diet => diet !== diets)
+      setOnOff(algo)
+    }else{
+      setOnOff([...onOff, diets])
+    }
   };
 
-  const handleOrigi = (event) => {
-    dispatch(originFilter(event.target.value));
+  const handleOrigi = (caso) => {
+    dispatch(originFilter(caso));
   };
 
-  const hadleDiet = (event) => {
-    dispatch(dietOrder(event.target.value));
+  const hadleDiet = (caso) => {
+    dispatch(dietOrder(caso));
   };
 
-  const hadleHealt = (event) => {
-    dispatch(healtScoreOrder(event.target.value));
+  const hadleHealt = (caso) => {
+    dispatch(healtScoreOrder(caso));
   };
 
   useEffect(() => {
@@ -44,42 +60,48 @@ const Nav = () => {
   const { Diets } = useSelector((state) => state);
 
   return (
-    <div>
-      <div>
-        <select onChange={hadleHealt}>
-          <option value="Reset">Order by healtScore:</option>
-          <option value="A">Upward</option>
-          <option value="D">Falling</option>
-        </select>
+    <>
+    { aux3 ? <div className={style.container} >
+      <div className={style.arrow2} onClick={() => {setAux3(!aux3)}}><svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-chevron-left" width="44" height="44" viewBox="0 0 24 24" stroke-width="1.5" stroke="#fff" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><polyline points="15 6 9 12 15 18" /></svg></div>
+      <div className={style.input}>
+        <SearchBar />
       </div>
-      <div>
-        <select onChange={hadleDiet}>
-          <option value="Reset">Order by Name:</option>
-          <option value="A">Upward</option>
-          <option value="D">Falling</option>
-        </select>
-      </div>
-      <div>
-        <select onChange={handleOrigi}>
-          <option value="Reset">Filter by origin:</option>
-          <option value="A">Api</option>
-          <option value="B">DataBase</option>
-        </select>
-      </div>
-      <select onChange={handlefilter}>
-        <option value="Reset">Filter by Diets:</option>
+      <div className={style.divOrder}> Diets </div>
+      <div className={style.conteinerDiets}>
         {Diets.map(({ name, id }) => {
           return (
-            <option key={id} value={name}>
+            <div key={id} value={name} className={`${style.diets}  ${onOff.includes(name) ? style.dietsActive : ""}`} onClick={() => handlefilter(name)}>
               {name}
-            </option>
+            </div>
           );
         })}
-      </select>
-      <Link to="/formPage" ><button>FormPage</button></Link>
-      <SearchBar />
-      <button onClick={onClick}>Reset</button>
-    </div>
+      </div>
+
+        <div className={style.divOrder}>Order</div>
+      <div className={style.containerOrder}>
+        <div className={style.order}>
+        { aux ? <div onClick={() => {hadleHealt("A");setAux(!aux)}}><svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-sort-ascending-numbers" width="44" height="44" viewBox="0 0 24 24" stroke-width="1.5" stroke="#ffffff" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M4 15l3 3l3 -3" /><path d="M7 6v12" /><path d="M17 3a2 2 0 0 1 2 2v3a2 2 0 1 1 -4 0v-3a2 2 0 0 1 2 -2z" /><circle cx="17" cy="16" r="2" /><path d="M19 16v3a2 2 0 0 1 -2 2h-1.5" /></svg><h3>Healt Score</h3></div>
+        : <div onClick={() => {hadleHealt("D");setAux(!aux)}}><svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-sort-descending-numbers" width="44" height="44" viewBox="0 0 24 24" stroke-width="1.5" stroke="#ffffff" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M4 15l3 3l3 -3" /><path d="M7 6v12" /><path d="M17 14a2 2 0 0 1 2 2v3a2 2 0 1 1 -4 0v-3a2 2 0 0 1 2 -2z" /><circle cx="17" cy="5" r="2" /><path d="M19 5v3a2 2 0 0 1 -2 2h-1.5" /></svg><h3>Healt Score</h3></div>}
+  
+        </div>
+  
+        <div className={style.order}>
+        { aux2 ? <div onClick={() => {hadleDiet("A");setAux2(!aux2)}}><svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-sort-ascending-letters" width="44" height="44" viewBox="0 0 24 24" stroke-width="1.5" stroke="#ffffff" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M15 10v-5c0 -1.38 .62 -2 2 -2s2 .62 2 2v5m0 -3h-4" /><path d="M19 21h-4l4 -7h-4" /><path d="M4 15l3 3l3 -3" /><path d="M7 6v12" /></svg><h3>Name</h3></div>
+        : <div onClick={() => {hadleDiet("D");setAux2(!aux2)}}><svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-sort-descending-letters" width="44" height="44" viewBox="0 0 24 24" stroke-width="1.5" stroke="#ffffff" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M15 21v-5c0 -1.38 .62 -2 2 -2s2 .62 2 2v5m0 -3h-4" /><path d="M19 10h-4l4 -7h-4" /><path d="M4 15l3 3l3 -3" /><path d="M7 6v12" /></svg><h3>Name</h3></div>}
+          
+        </div>
+        </div>
+
+
+        <div className={style.containerDb}>
+          <div className={style.divDb} onClick={() => {handleOrigi("A")}}><svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-cloud" width="44" height="44" viewBox="0 0 24 24" stroke-width="1.5" stroke="#ffffff" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M7 18a4.6 4.4 0 0 1 0 -9a5 4.5 0 0 1 11 2h1a3.5 3.5 0 0 1 0 7h-12" /></svg> <h3>API</h3> </div>
+          <div className={style.divDb} onClick={() => {handleOrigi("D")}}><svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-database" width="44" height="44" viewBox="0 0 24 24" stroke-width="1.5" stroke="#ffffff" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><ellipse cx="12" cy="6" rx="8" ry="3"></ellipse><path d="M4 6v6a8 3 0 0 0 16 0v-6" /><path d="M4 12v6a8 3 0 0 0 16 0v-6" /></svg> <h3>DATABASE</h3></div>
+        </div>
+
+      <div className={style.buttonReset} onClick={onClick}><svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-refresh" width="44" height="44" viewBox="0 0 24 24" stroke-width="1.5" stroke="#ffffff" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M20 11a8.1 8.1 0 0 0 -15.5 -2m-.5 -4v4h4" /><path d="M4 13a8.1 8.1 0 0 0 15.5 2m.5 4v-4h-4" /></svg> <h3>Reset</h3></div>
+    
+    </div> : <div className={style.arrow} onClick={() => {setAux3(!aux3)}}> <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-chevron-right" width="44" height="44" viewBox="0 0 24 24" stroke-width="1.5" stroke="#A63B32" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><polyline points="9 6 15 12 9 18" /></svg></div>}
+    </>
   );
 };
 

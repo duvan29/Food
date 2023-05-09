@@ -27,11 +27,11 @@ const getDiets = async (req, res) => {
             });
         }
 
-            const promises = Array.from(dietEach).map((name) =>
-                    Diet.create({ name })
-                  );
+        const promises = Array.from(dietEach).map((name) =>
+                Diet.create({ name })
+            );
             
-            await Promise.all(promises);
+        await Promise.all(promises);
             
         // Obtener todas las dietas desde la base de datos y enviarlas como respuesta al cliente
         const allDiets = await Diet.findAll();

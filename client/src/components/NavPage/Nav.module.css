@@ -1,0 +1,152 @@
+@import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@1,700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Special+Elite&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@200&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Carlito&display=swap');
+
+
+.arrow {
+    position: absolute;
+    margin-top: -40px;
+    margin-left: 10px;
+}
+
+.arrow {
+    cursor: pointer;
+}
+
+.arrow2{
+    position: absolute;
+    margin-top: -60px;
+    margin-left: 390px;
+}
+
+.arrow2{
+    cursor: pointer;
+}
+
+.container{
+    max-width: 24%;
+    min-width: 24%;
+    min-height: 100%;
+    margin-top: -55px;
+    background-color: #A63B32;
+    align-items: center;
+    padding-top: 80px;
+}
+
+.input{
+    margin-top: 60px;
+    margin-bottom: 40px;
+}
+.conteinerDiets{
+    display: flex;
+    flex-wrap:wrap;
+    padding-left: 35px;
+}
+
+.diets{
+    color: #fff; /* color de fuente */
+    padding: 10px 18px;
+    position: relative;
+    z-index: 1;
+    overflow: hidden;
+    display: inline-block;
+    margin-bottom: 10px;
+}
+
+.diets:hover {
+    background-color: #fff;
+    color: #A63B32;
+    cursor: pointer;
+}
+
+.dietsActive{
+    background-color: #fff;
+    color: #A63B32;
+    cursor: pointer;
+}
+
+.divOrder{
+    margin-top: 20px;
+    margin-bottom: 10px;
+    font-size: 25px;
+    color: #fff;
+}
+
+.containerOrder{
+    display: flex;
+    flex-wrap:wrap;
+    align-items: center;
+    justify-content: center;
+}
+
+.order{
+    padding-left: 30px;
+    margin-right: 70px;
+    font-size: 20px;
+    color: #fff;
+}
+
+.order h3{
+    margin-top: 0;
+    opacity: 0;
+}
+
+.order:hover{
+    cursor: pointer;
+}
+
+.order:hover h3{
+    cursor: pointer;
+    opacity: 1;
+    transition: all 0.5s ease;
+}
+
+.containerDb{
+    display: flex;
+    flex-direction: row; 
+    justify-content: center;
+    margin: 20px;
+}
+
+.divDb{
+    padding-left: 60px;
+    margin-right: 30px;
+    font-size: 20px;
+    color: #fff;
+}
+
+.divDb h3{
+    margin-top: 0;
+    opacity: 0;
+}
+
+.divDb:hover{
+    cursor: pointer;
+}
+.divDb:hover h3{
+    cursor: pointer;
+    opacity: 1;
+    transition: all 0.5s ease;
+}
+
+.buttonReset{
+    font-size: 20px;
+    color: #fff;
+}
+
+.buttonReset h3{
+    margin-top: 0;
+    opacity: 0;
+}
+
+.buttonReset:hover{
+    cursor: pointer;
+}
+
+.buttonReset:hover h3{
+    cursor: pointer;
+    opacity: 1;
+    transition: all 0.5s ease;
+}

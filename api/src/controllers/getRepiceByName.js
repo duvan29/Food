@@ -6,8 +6,10 @@ const getRepiceByName = async (req,res) => {
     const { name } = req.query; 
 
    try {
-    const recipeApiUrl =  await axios.get(`https://api.spoonacular.com/recipes/complexSearch?apiKey=${API_KEY}&addRecipeInformation=true&number=100`); // Realiza una solicitud a la API externa para obtener información de las recetas.
-    const getrecipeApiInfo = await recipeApiUrl.data.results.map(e => { // Mapea los resultados de la respuesta de la API externa para crear un arreglo de objetos con la información de cada receta.
+    const recipeApiUrl =  await axios.get(`https://api.spoonacular.com/recipes/complexSearch?apiKey=${API_KEY}&addRecipeInformation=true&number=2`); 
+    // Realiza una solicitud a la API externa para obtener información de las recetas.
+    const getrecipeApiInfo = await recipeApiUrl.data.results.map(e => { 
+        // Mapea los resultados de la respuesta de la API externa para crear un arreglo de objetos con la información de cada receta.
         return {
             id: e.id,
             image: e.image,
@@ -58,9 +60,8 @@ if (name) {
     // De lo contrario, se devuelve toda la información de todas las recetas.
           return res.status(200).send(allRecipes);
         }  
-    
 } catch (err){
-    return res.status(400).send(err.message);
+    return res.status(404).send(err.message);
 }
 }
 

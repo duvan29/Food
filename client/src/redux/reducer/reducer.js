@@ -1,3 +1,4 @@
+/* eslint-disable array-callback-return */
 import {
   ALL_RECIPES,
   SEARCH_RECIPES,
@@ -59,15 +60,17 @@ export default function rootReducer(state = inicialState, { type, payload }) {
         Diets: payload,
       };
     case FILTER_DIETS:
-      let dietFilt = state.recipes.filter((recipe) => {
-        if (recipe.dietTypes && payload !== "Reset") {
-          return recipe.dietTypes.includes(payload);
+      let dietFilt = [];
+      for(const e of payload) {
+        dietFilt = state.originRecipes.filter((recipe) => {
+        if (recipe.dietTypes && e !== "Reset") {
+          return recipe.dietTypes.includes(e);
         }
-      });
-      if (payload === "Reset") dietFilt = state.originRecipes;
+      });    
+      }
       return {
         ...state,
-        recipes: dietFilt,
+        recipes: payload.length === 0 ? state.originRecipes : dietFilt
       };
     case FILTER_ORIGIN:
       let orgFilt = state.originRecipes.filter((recipe) => {

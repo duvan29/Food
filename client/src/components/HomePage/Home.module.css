@@ -1,0 +1,19 @@
+.bg{
+    height: 220vh;
+    background-image: url("./img/bg.avif");
+    background-attachment: fixed;
+}
+
+.Text {
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.768);
+}
+
+.flex{
+    min-height: calc(100vh - 55px);
+    display: flex;
+}
+
