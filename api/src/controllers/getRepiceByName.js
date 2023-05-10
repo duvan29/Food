@@ -6,7 +6,7 @@ const getRepiceByName = async (req,res) => {
     const { name } = req.query; 
 
    try {
-    const recipeApiUrl =  await axios.get(`https://api.spoonacular.com/recipes/complexSearch?apiKey=${API_KEY}&addRecipeInformation=true&number=2`); 
+    const recipeApiUrl =  await axios.get(`https://api.spoonacular.com/recipes/complexSearch?apiKey=${API_KEY}&addRecipeInformation=true&number=100`); 
     // Realiza una solicitud a la API externa para obtener información de las recetas.
     const getrecipeApiInfo = await recipeApiUrl.data.results.map(e => { 
         // Mapea los resultados de la respuesta de la API externa para crear un arreglo de objetos con la información de cada receta.

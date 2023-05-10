@@ -1,4 +1,3 @@
-
 import style from './Nav.module.css'
 import SearchBar from "../SearchBar/SearchBar";
 import { useDispatch, useSelector } from "react-redux";
@@ -28,7 +27,7 @@ const Nav = () => {
 
   useEffect(() => {
     dispatch(dietsFilter(onOff))
-  }, [onOff]);
+  }, [dispatch, onOff]);
 
   const handlefilter = (diets) => {
     if (onOff.includes(diets)) {

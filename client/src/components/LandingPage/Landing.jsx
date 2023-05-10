@@ -1,7 +1,5 @@
 import style from './Linding.module.css'
 import { Link } from 'react-router-dom';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faUtensils } from '@fortawesome/free-solid-svg-icons'
 
 
 
@@ -16,7 +14,7 @@ const Lading = () => {
                 <hr/>
                 <h2>Make your favorite recipe</h2>  
                 <div>
-                    <Link to="/home"><div class={style.botton}> <FontAwesomeIcon icon={faUtensils}/> LET'S GO</div></Link>
+                    <Link to="/home"><div class={style.botton}> LET'S GO</div></Link>
                 </div>
             </div>         
         </div>

@@ -7,27 +7,37 @@ const getRecipeById = async (req,res) => {
 try {
 // Obtenemos el id de la receta desde los parámetros de la solicitud
 const { id } = req.params;
-    // Obtenemos de la base de datos la información de la receta con el id correspondiente,
-    // incluyendo los tipos de dietas asociados a ella
-    const getDbInfoId = await Recipe.findAll({
-        include: {
-            model: Diet,
-            attributes: ['name'],
-            through: {
-                attributes: [],
-            }
-        }
-    });
+    // // Obtenemos de la base de datos la información de la receta con el id correspondiente,
+    // // incluyendo los tipos de dietas asociados a ella
+    // const getDbInfoId = await Recipe.findAll({
+    //     include: {
+    //         model: Diet,
+    //         attributes: ['name'],
+    //         through: {
+    //             attributes: [],
+    //         }
+    //     }
+    // });
 
-    // Realizamos una solicitud a la API de Spoonacular para obtener la información de la receta
-    const getApiById = await axios.get (`https://api.spoonacular.com/recipes/${id}/information?apiKey=${API_KEY}`);
+    
 
     // Comprobamos que el id tenga el formato correcto
-    if (/^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}$/.test(id)) {
+    if ( id > 1095753 ) {
+        const getDbInfoId = await Recipe.findByPk(id, {
+            include: {
+                model: Diet,
+                attributes: ['name'],
+                through: {
+                    attributes: [],
+                }
+            }
+        });    
         // Si el id es válido, obtenemos la información de la receta desde la base de datos
         let dbRecipesById =  getDbInfoId;            
         return res.status(200).json(dbRecipesById);
     } else { 
+        // Realizamos una solicitud a la API de Spoonacular para obtener la información de la receta
+        const getApiById = await axios.get (`https://api.spoonacular.com/recipes/${id}/information?apiKey=${API_KEY}number=100`);
         // Si el id no es válido, obtenemos la información de la receta desde la API de Spoonacular
         let apiRecipesById =  getApiById;
         if (apiRecipesById.data.id) {

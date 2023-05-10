@@ -11,6 +11,7 @@ import {
   ORDER_DIET,
   FILTER_DIETS,
 } from "./types";
+import axios from "axios";
 
 export function resetPage() {
   return {
@@ -55,6 +56,19 @@ export function allDiets(diets) {
     type: ALL_DIETS,
     payload: diets,
   };
+}
+
+
+export function addRecipe(payload) {
+  console.log(payload);
+  return async function(dispatch) {
+      try {
+          let response = await axios.post(`http://localhost:3001/recipes`, payload);
+          return response;
+      } catch (error) {
+          console.log(error)
+    }
+  }
 }
 
 export function dietsFilter(diets) {

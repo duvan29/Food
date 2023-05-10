@@ -15,13 +15,14 @@ const Recipes = () => {
   return (
     <div>
       <div className={style.cardContainer}>
-        {viewCharacters.map(({ id, name, image, dietTypes, healthScore }) => {
+        {viewCharacters.map(({ id, name, image, dietTypes, healthScore, Diets }) => {
           return (
             <Recipe
               key={id}
               id={id}
               name={name} 
               healthScore={healthScore}
+              Diets={Diets}
               dietTypes={dietTypes}
               image={image}
             />

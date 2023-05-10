@@ -1,0 +1,132 @@
+.contenedor{
+    display: flex;
+    z-index: 10000;
+    position: fixed;
+    top: 0;
+    background-color: #00000082;
+    min-width: 100% ;
+    min-height: 100%;
+    justify-content: center;
+    align-items: center;
+}
+
+.createRecipeCard{
+    width: 35%;
+    height: 900px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    border: 5px solid #A63B32;
+    background: #ffffff;
+    backdrop-filter: blur(5px);
+    border-radius: 10px;
+}
+
+.equisX{
+    position: absolute;
+    margin-bottom: 750px;
+    margin-left: 20px;
+}
+
+.equisX:hover{
+    cursor: pointer;
+}
+
+/*** ESTILOS BOTÓN ***/
+.botton {
+    background: #fff; /* color de fondo */
+    color: #A63B32; /* color de fuente */
+    border: 2px solid #A63B32; /* tamaño y color de borde */
+    padding: 10px 10px;
+    border-radius: 5px; /* redondear bordes */
+    position: relative;
+    z-index: 1;
+    overflow: hidden;
+    display: inline-block;
+    font-family: 'Carlito', sans-serif;
+    font-size: 20px;
+    margin-top: 25px;
+  }
+
+  .botton:hover {
+    color: #fff;/* color de fuente hover */
+    cursor: pointer;
+  }
+
+  .botton::after {
+    content: "";
+    background: #A63B32; /* color de fondo hover */
+    position: absolute;
+    z-index: -1;
+    padding: 16px 20px;
+    display: block;
+    left: -30%;
+    right: -30%;
+    top: 0;
+    bottom: 0;
+    transform: skewX(-45deg) scale(0, 1);
+    transition: all 0.3s ease;
+  }
+
+  .botton:hover::after {
+    transition: all 0.3s ease-out;
+    transform: skewX(-45deg) scale(1, 1);
+  }
+
+    .lblNombre{
+        font-size: 25px;
+        font-family: 'Carlito', sans-serif;
+        margin: 10px;
+    }
+
+   .textNomb {
+    color: #000;
+    background: #ffffff00;
+    width: 250px;
+    border:none;
+    border-bottom:4px solid #A63B32;
+    margin-left: 10px;
+    }
+
+    .conjunto{
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+    }
+
+    
+    .dietsAndHs{
+        font-family: 'Carlito', sans-serif;
+        font-size: 25px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .error{
+        font-size: 15px;
+        margin-bottom: 10px;
+        color: red;
+    }
+
+    .textTarea{
+        color: #000;
+        background: #ffffff00;
+        border:4px solid #A63B32;
+        font-family: 'Carlito', sans-serif;
+        font-size: 15px;
+        border-radius: 5px;
+    }
+
+    .containerDiets{
+        display: flex;
+        flex-wrap:wrap;
+        justify-content: center;
+        align-items: center;
+        margin: 10px;
+    }
+
+    .diets{
+        font-size: 16px;
+        margin: 10px;
+    }

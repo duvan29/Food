@@ -11,6 +11,7 @@ import {
   ORDER_HEALTHSCORE,
   ORDER_DIET,
   FILTER_DIETS,
+  ADD_RECIPE
 } from "../actions/types"
 
 const inicialState = {
@@ -54,11 +55,16 @@ export default function rootReducer(state = inicialState, { type, payload }) {
         recipes: state.originRecipes,
         numPage: 1,
       };
+    case ADD_RECIPE:
+      return {
+        ...state,
+      };
     case ALL_DIETS:
       return {
         ...state,
         Diets: payload,
       };
+    
     case FILTER_DIETS:
       let dietFilt = [];
       for(const e of payload) {
@@ -76,7 +82,7 @@ export default function rootReducer(state = inicialState, { type, payload }) {
       let orgFilt = state.originRecipes.filter((recipe) => {
         if (payload === "A" && payload !== "Reset") {
           return recipe.id <= 1095753;
-        } else if (payload === "B" && payload !== "Reset") {
+        } else if (payload === "D" && payload !== "Reset") {
           return recipe.id > 1095753;
         }
       });
