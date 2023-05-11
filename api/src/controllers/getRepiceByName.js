@@ -16,9 +16,7 @@ const getRepiceByName = async (req,res) => {
             name: e.title,
             dietTypes: e.diets,
             summary: e.summary,
-            score: e.spoonacularScore,
             healthScore: e.healthScore,
-            dishTypes: e.dishTypes,
             steps: e.analyzedInstructions[0]?.steps.map(e => {
                 return {
                     number: e.number,

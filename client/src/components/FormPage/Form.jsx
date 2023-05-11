@@ -62,6 +62,7 @@ const FormPage = ({ createRecipeData }) => {
         let newArray = input.diets;
         let find = newArray.indexOf(e.target.value);
         
+        
         if (find >= 0) {
             newArray.splice(find, 1)
         } else {
@@ -117,7 +118,7 @@ const FormPage = ({ createRecipeData }) => {
                         <div  >
                             <div className={style.conjunto}>
                             <div className={style.lblNombre}>Name </div>
-                            <input  className={style.textNomb} name="name" type="text" placeholder="Arepas" value={input.name}  onChange={e => handleChange(e)}/>
+                            <input className={style.textNomb} name="name" type="text" placeholder="Arepas" value={input.name}  onChange={e => handleChange(e)}/>
                             </div>
                             {errors.name && (
                                 <div >
@@ -151,7 +152,7 @@ const FormPage = ({ createRecipeData }) => {
                         <div >
                             <div className={style.lblNombre}>Summary</div>
                         </div>
-                            <textarea className={style.textTarea} name="summary" type="text" rows="4" cols="78" value={input.summary} onChange={e => handleChange(e)}/>
+                            <textarea className={style.textTarea} name="summary" type="text" rows="4" cols="78" value={`${input.summary}`} onChange={e => handleChange(e)}/>
                             {errors.summary && (
                                 <div >
                                 <span className={style.error}>{errors.summary}</span>
@@ -160,7 +161,7 @@ const FormPage = ({ createRecipeData }) => {
                         
                         <div >
                             <div className={style.lblNombre}>Steps</div>
-                            <textarea className={style.textTarea} name="stepByStep" type="text" rows="5" cols="78" value={input.stepByStep} onChange={e => handleChange(e)}/>
+                            <textarea className={style.textTarea} name="stepByStep" type="text" rows="5" cols="78" value={`${input.stepByStep}`} onChange={e => handleChange(e)}/>
                             {errors.steps && (
                                 <div >
                                 <span className={style.error}>{errors.steps}</span>

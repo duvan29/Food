@@ -69,10 +69,17 @@ export default function rootReducer(state = inicialState, { type, payload }) {
       let dietFilt = [];
       for(const e of payload) {
         dietFilt = state.originRecipes.filter((recipe) => {
-        if (recipe.dietTypes && e !== "Reset") {
+        if (recipe.dietTypes) {
           return recipe.dietTypes.includes(e);
         }
-      });    
+        if (recipe.Diets) {
+          const dietsDb = recipe.Diets.filter(ele => {
+            return ele.name.includes(e)
+          })
+          if (dietsDb.length) {
+            return recipe
+        }
+      }});    
       }
       return {
         ...state,
