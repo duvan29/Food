@@ -83,7 +83,8 @@ export default function rootReducer(state = inicialState, { type, payload }) {
       }
       return {
         ...state,
-        recipes: payload.length === 0 ? state.originRecipes : dietFilt
+        recipes: payload.length === 0 ? state.originRecipes : dietFilt,
+        numPage: 1, 
       };
     case FILTER_ORIGIN:
       let orgFilt = state.originRecipes.filter((recipe) => {
@@ -97,6 +98,7 @@ export default function rootReducer(state = inicialState, { type, payload }) {
       return {
         ...state,
         recipes: orgFilt,
+        numPage: 1, 
       };
     case ORDER_DIET:
       let orderDiet = [...state.recipes].sort((a, b) => {

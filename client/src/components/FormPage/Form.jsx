@@ -122,18 +122,18 @@ const FormPage = ({ createRecipeData }) => {
                             </div>
                             {errors.name && (
                                 <div >
-                                <span className={style.error}>{errors.name}</span>
+                                    <span className={style.error}>{errors.name}</span>
                                 </div>
                             )}
                         </div>
                         <div>
                         <div className={style.conjunto}>
                             <div className={style.lblNombre}>Image </div>
-                            <input className={style.textNomb} name="image" placeholder="URL" type="text" onChange={handleChange} />
+                                <input className={style.textNomb} name="image" placeholder="URL" type="text" onChange={e =>handleChange(e)} />
                             </div>
                             {errors.image && (
                                 <div >
-                                <span className={style.error}>{errors.image}</span>
+                                    <span className={style.error}>{errors.image}</span>
                                 </div>
                             )}
                         </div>
